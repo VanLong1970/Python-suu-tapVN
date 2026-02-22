@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PyBrowserVN SuperLite XP</title>
+<style>
+body {
+    background-color: #ECECEC;
+    font-family: Tahoma, sans-serif;
+    color: #000000;
+    margin: 0;
+}
+.nav-bar {
+    background-color: #3A6EA5;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    color: #ffffff;
+    font-weight: bold;
+    border-left: 4px solid #da251d; /* Vinagle branding */
+}
+.container {
+    text-align: center;
+    margin-top: 120px;
+}
+.logo {
+    font-size: 28px;
+    color: #3A6EA5;
+    margin-bottom: 20px;
+    font-weight: bold; /* Thêm weight */
+}
+.logo span {
+    color: #da251d; /* Vinagle red */
+}
+.search-bar {
+    max-width: 400px; /* Responsive */
+    width: 90%;
+    padding: 8px 12px;
+    border: 2px solid #3A6EA5;
+    font-size: 14px;
+    font-family: Tahoma, sans-serif; /* Consistent */
+}
+.search-bar:focus {
+    outline: none;
+    border-color: #da251d; /* Vinagle accent */
+}
+button {
+    background-color: #3A6EA5;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 8px;
+    cursor: pointer;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+}
+button:hover {
+    background-color: #2C5D8A;
+}
+button:active {
+    background-color: #1F4A6E; /* Click feedback */
+}
+button:disabled {
+    background-color: #999;
+    cursor: wait;
+}
+</style>
+</head>
+<body>
+<div class="nav-bar">PyBrowserVN SuperLite XP</div>
+<div class="container">
+    <div class="logo"><span>V</span>inagle XP Edition</div> <!-- Không dùng emoji -->
+    <input class="search-bar" placeholder="Nhập từ khóa..." autofocus>
+    <button onclick="search()" id="searchBtn">Tìm kiếm</button>
+</div>
+<script>
+// XP-style: JS đơn giản, không thư viện nặng
+function search() {
+    var btn = document.getElementById('searchBtn');
+    var query = document.querySelector('.search-bar').value;
+    
+    if (!query.trim()) {
+        alert('Vui lòng nhập từ khóa'); // XP-style alert
+        return;
+    }
+    
+    // Loading state đơn giản
+    btn.disabled = true;
+    btn.innerText = 'Đang tìm...';
+    
+    // Navigate hoặc gọi API
+    window.location.href = '#q=' + encodeURIComponent(query);
+}
+
+// Enter key support
+document.querySelector('.search-bar').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') search();
+});
+</script>
+</body>
+</html>
